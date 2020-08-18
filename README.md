@@ -37,18 +37,27 @@ multiple.py -h for help
 .
 example:
 Chr1	chr01
+
 Chr2	chr02
+
 Chr3	chr03
 --------------------
 2.  location.lg
+
 Mummer=<Dir of software mummer>
+  
 Lastz=<Dir of software lastz> 
+  
 svmu=<Dir of software svmu>
   
 example:
+
 Mummer=/home/lfp/soft/mummer-4.0.0beta2/
+
 Lastz=/home/lfp/soft/lastz-master/src/
+
 svmu=/home/lfp/soft/svmu/
+
   
 
 
