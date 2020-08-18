@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # Copyright (C) <2020> PMBL;South China Agricultural University. All rights reserved
+#!/usr/bin/env python
+# Copyright (C) <2020> PMBL;South China Agricultural University. All rights reserved
 __author__ = "Write by Fangping Li"
 __version__ = '0.1.0'
 
@@ -51,6 +53,8 @@ seq2 = gosome.query#sys.argv[2] #Secondgenome
 seqdic1 = seqfileread(seq1)
 seqdic2 = seqfileread(seq2)
 
+print("Sequence read done!")
+
 pairfile = open(gosome.pairguide,"r")#sys.argv[3]#svguidefile
 pairfileline = list(pairfile.readlines())
 
@@ -64,11 +68,11 @@ lastz = parameline[1].split("=")[1]
 svmu = parameline[2].split("=")[1]
 parame.close()
 
-count = 0
+
 
 golist = open("golist","w")
 
-
+count = 0
 for i in pairfileline:
     count += 1
     i = i.split()
@@ -95,5 +99,17 @@ else:
     print("error!")
 
 if gosome.runall == "yes":
-    print("Go to create lineal pangenome!")
+    goout = gosome.output
+    fliter = str(gosome.flitersize)
+    svguide = goout+"."+fliter+".txt"
+    print("-all yes; Go to create lineal pangenome!")
+    count = 0
+    for i in pairfileline:
+        count += 1
+        os.system("creatpangenome.py -1 "+"panchr"+ str(count)+"/Refchr"+str(count)+" -2 "+"panchr"+ str(count)+"/Quechr"+str(count)+
+                  " -g "+svguide+"-o XXXXoutput"+str(count))
+        
+    os.system("cat XXXXoutput* > "+goout+".fasta")
+    os.system("rm XXXXoutput*")
+    print("Your output is "+goout+".fasta")
     
