@@ -1,0 +1,8 @@
+creatpangenome.py
+multiple.py
+mumlastzsvmu.sh
+setup.py
+creatpangenome.egg-info/PKG-INFO
+creatpangenome.egg-info/SOURCES.txt
+creatpangenome.egg-info/dependency_links.txt
+creatpangenome.egg-info/top_level.txt
