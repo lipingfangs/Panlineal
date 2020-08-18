@@ -46,7 +46,7 @@ Chr1	chr01
 Chr2	chr02
 
 Chr3	chr03
---------------------
+
 2.  location.lg
 
 Mummer=<Dir of software mummer>
