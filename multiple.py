@@ -8,7 +8,7 @@ import sys
 import os
 
 def get_options():
-    example = "./multiple.py -1 ref.fa -2 query.fa -p example.pair.cfg -t 20 -all yes -o refquery -f 1000" 
+    example = "./multiple.py -1 ref.fa -2 query.fa -p example.pair.cfg -t 20 -all yes -o refquery -f 1000 -l location.lg" 
     description = "Create one-by-one read-pairs and sv compare  example: " + example
     parser = argparse.ArgumentParser(description = description,prog = 'multiple.py')
     parser.add_argument('-1', '--reference', action='store',type=str,help='input your reference .fasta')
