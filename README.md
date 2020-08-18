@@ -12,14 +12,19 @@ python setup.py install
 #Attention 
 This Pipeline rely on Mummer Lastz and svmu
 This pipeline only support one-line .fasta format
+
 Support this:
+
 >1dna_chromosomechromosome_IRGSP-1.0_1_1_43270923_1REF
 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+
 But not this
+
 >1dna_chromosomechromosome_IRGSP-1.0_1_1_43270923_1REF
 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+
 Script goone.py in this package is able to convey these format
 usage:
 python goone.py <in.fasta> <out.fasta>
