@@ -1,4 +1,6 @@
 from setuptools import setup, find_packages
+import os
+os.system("chmod 777 multiple.py goone.py creatpangenome.py mumlastzsvmu.sh")
 setup(
       name="creatpangenome",
       version="0.10",
