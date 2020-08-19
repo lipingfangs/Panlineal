@@ -35,7 +35,9 @@ multiple.py -h for help
 
 ##Enter files format:
 1.  example.pair.cfg:
+
 <ref.chromosome1> <query.Homologous.chromosome1>
+
 <ref.chromosome2> <query.Homologous.chromosome2>
 .
 .
