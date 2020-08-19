@@ -12,7 +12,7 @@ ${mummer}nucmer --threads ${thread} --prefix=${goout} ${goin1ref} ${goin2query};
 echo "${lastz}lastz ${goin1ref} ${goin2query}  --chain  --format=general:name1,strand1,start1,end1,name2,strand2,start2,end2 > ${goout}_lastz.txt";
 ${lastz}lastz ${goin1ref} ${goin2query}  --chain  --format=general:name1,strand1,start1,end1,name2,strand2,start2,end2 > ${goout}_lastz.txt;
 echo "${svmu}svmu ${goout}.delta  ${goin1ref} ${goin2query} h ${goout}_lastz.txt  ${goout}";
-${svmu}svmu ${goout}.delta  ${goin1ref} ${goin2query} h ${goout}_lastz.txt  ${goout};
+${svmu}svmu ${goout}.delta  ${goin1ref} ${goin2query} h ${goout}_lastz.txt ${goout};
 filter=1000; #default 1000
 nine=9;
 zero=0;
