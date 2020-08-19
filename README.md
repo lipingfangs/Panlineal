@@ -40,7 +40,9 @@ multiple.py -h for help
 .
 .
 .
+
 example:
+
 Chr1	chr01
 
 Chr2	chr02
