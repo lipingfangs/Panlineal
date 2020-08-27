@@ -12,7 +12,7 @@ python setup.py install
 
 **Attention**
 
-This Pipeline rely on Mummer, Lastz, bowtie2, samtools and svmu; User need to write path of these at file location.lg   
+This Pipeline rely on Mummer, Lastz, bowtie2, samtools and svmu; Users need to write path of these at file location.lg   
 
 This pipeline only support one-line .fasta format
 
