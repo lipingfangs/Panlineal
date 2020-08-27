@@ -2,7 +2,7 @@ Panlineal:A pipeline to generate lineal pan-genome
 --------------------
 
 
-**Install ** 
+**Install** 
 
 git clone https://github.com/lipingfangs/Panlineal.git
 
@@ -10,7 +10,7 @@ cd Panlineal
 
 python setup.py install
 
-**Attention **
+**Attention**
 
 This Pipeline rely on Mummer, Lastz, bowtie2, samtools and svmu; User need to write path of these at file location.lg   
 
@@ -32,11 +32,11 @@ NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 
 Script goone.py in this package is able to convey these format
 
-usage:
+***usage:***
 
 python goone.py <in.fasta> <out.fasta>
 
-**Usage for this programme：**
+***Usage for this programme:***
 These programme was divided into Pan-genome forming(Panlineal.py) and SVs mapping(mappingtools.py);
 
 >Panlineal.py -h ;for help
@@ -45,20 +45,20 @@ These programme was divided into Pan-genome forming(Panlineal.py) and SVs mappin
 **.cfg and .lg file is necessary for this programme** 
 
 **Enter files format:**
+
 1.  example.pair.cfg:
 <ref.chromosome1> <query.Homologous.chromosome1>  
 <ref.chromosome2> <query.Homologous.chromosome2>
-
-.
-.
-.
+...
 
 >example:
-Chr1	chr01  
+
+>Chr1	chr01  
 Chr2	chr02  
 Chr3	chr03  
 
->2.  location.lg
+2.  location.lg
+
 Mummer=<Dir of software mummer>  
 Lastz=<Dir of software lastz>   
 svmu=<Dir of software svmu>    
@@ -67,8 +67,9 @@ samtools=<Dir of software samtools>
 ref=<reference sequence .fasta>  
 query=<query1 sequence .fasta>,<query2 sequence .fasta>,......  
 
->example:
-Mummer=/home/lfp/soft/mummer-4.0.0beta2/  
+example:
+
+>Mummer=/home/lfp/soft/mummer-4.0.0beta2/  
 Lastz=/home/lfp/soft/lastz-master/src/  
 svmu=/home/lfp/soft/svmu/  
 bowtie2=/home/lfp/miniconda3/bin/  
