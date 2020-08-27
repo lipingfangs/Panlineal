@@ -51,7 +51,7 @@ These programme was divided into Pan-genome forming(Panlineal.py) and SVs mappin
 <ref.chromosome2> <query.Homologous.chromosome2>
 ...
 
->example:
+example:
 
 >Chr1	chr01  
 Chr2	chr02  
