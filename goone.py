@@ -31,4 +31,4 @@ for i in lines[1:]:
 file3.close()
 file4.close()    
 
-os.system("temp2020818")
+os.system("rm temp2020818")

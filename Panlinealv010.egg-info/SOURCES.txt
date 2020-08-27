@@ -1,0 +1,14 @@
+Gathergoc.py
+Panlineal.py
+README.md
+creatpangenome.py
+mappingtools.py
+multiple.py
+setup.py
+./script/bosm.sh
+./script/cadepth.sh
+./script/mumlastzsvmu.sh
+Panlinealv010.egg-info/PKG-INFO
+Panlinealv010.egg-info/SOURCES.txt
+Panlinealv010.egg-info/dependency_links.txt
+Panlinealv010.egg-info/top_level.txt

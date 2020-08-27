@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # Copyright (C) <2020> PMBL;South China Agricultural University. All rights reserved
-#!/usr/bin/env python
-# Copyright (C) <2020> PMBL;South China Agricultural University. All rights reserved
 __author__ = "Write by Fangping Li"
 __version__ = '0.1.0'
 
@@ -24,8 +22,13 @@ def get_options():
                          help='name of the  pan-genome output: <-o>.fasta',default="output")
     parser.add_argument('-f', '--flitersize', action='store',type=int,
                          help='fliter size of SV',default=1000)
+    parser.add_argument('-r', '--rangefliter', action='store',type=int,help='SVs distance between red and query',default=1000000)
     parser.add_argument('-l', '--location', action='store',type=str,
                          help='location of software "mummer" "lastz" and "svmu"',default=1000)
+    parser.add_argument('-clean', '--clean', action='store',type=str,choices=('yes','no'),
+                             help='Clean all of the middle file!"',default="no")
+    
+    
     parser.add_argument('--version', action='version',version='%(prog)s '+__version__+" "+__author__)
     
     return parser.parse_args()
@@ -49,7 +52,9 @@ def seqfileread(file):#readfa
 gosome = get_options()
 seq1 = gosome.reference#sys.argv[1] #Firstgenome
 seq2 = gosome.query#sys.argv[2] #Secondgenome
-
+rangefliter = gosome.rangefliter
+print(seq1)
+print(seq2)
 seqdic1 = seqfileread(seq1)
 seqdic2 = seqfileread(seq2)
 
@@ -73,9 +78,11 @@ parame.close()
 golist = open("golist","w")
 
 count = 0
-for i in pairfileline:
+for i in pairfileline:#for SVs mining
     count += 1
+    print(i)
     i = i.split()
+    print(i)
     os.system("mkdir panchr"+ str(count))
     go1 = open("panchr"+ str(count)+"/Refchr"+str(count),"w")
     tempref = "panchr"+ str(count)+"/Refchr"+str(count)
@@ -87,7 +94,7 @@ for i in pairfileline:
     print(seqdic2[i[1].strip()],file = go2)
     go1.close()
     go2.close()
-    print("bash mumlastzsvmu.sh "+mum.strip()+" "+lastz.strip()+" "+svmu.strip()+" "+tempref.strip()+" "+tempquery.strip()+" "+"panchr"+ str(count)+"/"+gosome.output+" "+str(gosome.threads)+" "+str(gosome.flitersize), file = golist)
+    print("bash mumlastzsvmu.sh "+mum.strip()+" "+lastz.strip()+" "+svmu.strip()+" "+tempref.strip()+" "+tempquery.strip()+" "+gosome.output+str(count)+" "+str(gosome.threads)+" "+str(gosome.flitersize), file = golist)
     
 
 golist.close()
@@ -98,18 +105,45 @@ if na == 0:
 else:
     print("error!")
 
-if gosome.runall == "yes":
-    goout = gosome.output
+if gosome.runall == "yes":#begin to generate the lineal pan-genome
+    goout = gosome.output+str(count)
     fliter = str(gosome.flitersize)
-    svguide = goout+"."+fliter+".txt"
+    
     print("-all yes; Go to create lineal pangenome!")
     count = 0
     for i in pairfileline:
         count += 1
-        os.system("creatpangenome.py -1 "+"panchr"+ str(count)+"/Refchr"+str(count)+" -2 "+"panchr"+ str(count)+"/Quechr"+str(count)+
-                  " -g "+svguide+"-o XXXXoutput"+str(count))
+        goout = gosome.output
+        svguide = goout+str(count)+"."+fliter+".txt"#svguide temp1.fasta1.1000.txt
+        print(svguide)
+        command = "creatpangenome.py -1 "+"panchr"+ str(count)+"/Refchr"+str(count)+" -2 "+"panchr"+str(count)+"/Quechr"+str(count)+" -g "+svguide+" -o XXXXoutput"+str(count)+" -r "+str(rangefliter)
+        print(command)
+        os.system(command)
         
-    os.system("cat XXXXoutput* > "+goout+".fasta")
+    os.system("cat XXXXoutput*.fasta > "+goout)#gather and create the final file
+    os.system("cat XXXXoutput*.goc > "+goout+".goc")#gather and create the final file
     os.system("rm XXXXoutput*")
-    print("Your output is "+goout+".fasta")
+    print("Your output is "+goout+"pan.genome.fasta")
+    print("finish")
     
+else:
+    print("finish")
+    
+if gosome.clean == "yes":
+    os.system("rm *txt")
+    os.system("rm -rf panchr*")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

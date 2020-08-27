@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 import os
-os.system("chmod 777 multiple.py goone.py creatpangenome.py mumlastzsvmu.sh")
+os.system("chmod 777 multiple.py goone.py creatpangenome.py Panlineal.py Gathergoc.py ./script/mumlastzsvmu.sh mappingtools.py ./script/bosm.sh ./script/cadepth.sh")
 setup(
-      name="creatpangenome",
+      name="Panlinealv010",
       version="0.10",
-      description="My test module",
+      description="Panlineal",
       author="Fangping Li",
       license="LGPL",
       packages= find_packages(),
-      scripts=["creatpangenome.py","mumlastzsvmu.sh","multiple.py"],
+      scripts=["creatpangenome.py","./script/mumlastzsvmu.sh","multiple.py","./script/bosm.sh","./script/cadepth.sh","mappingtools.py","Panlineal.py","Gathergoc.py"],
       )

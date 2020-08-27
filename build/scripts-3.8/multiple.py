@@ -22,7 +22,6 @@ def get_options():
                          help='name of the  pan-genome output: <-o>.fasta',default="output")
     parser.add_argument('-f', '--flitersize', action='store',type=int,
                          help='fliter size of SV',default=1000)
-    parser.add_argument('-r', '--rangefliter', action='store',type=int,help='SVs distance between red and query',default=1000000)
     parser.add_argument('-l', '--location', action='store',type=str,
                          help='location of software "mummer" "lastz" and "svmu"',default=1000)
     parser.add_argument('-clean', '--clean', action='store',type=str,choices=('yes','no'),
@@ -52,9 +51,7 @@ def seqfileread(file):#readfa
 gosome = get_options()
 seq1 = gosome.reference#sys.argv[1] #Firstgenome
 seq2 = gosome.query#sys.argv[2] #Secondgenome
-rangefliter = gosome.rangefliter
-print(seq1)
-print(seq2)
+
 seqdic1 = seqfileread(seq1)
 seqdic2 = seqfileread(seq2)
 
@@ -78,11 +75,9 @@ parame.close()
 golist = open("golist","w")
 
 count = 0
-for i in pairfileline:#for SVs mining
+for i in pairfileline:
     count += 1
-    print(i)
     i = i.split()
-    print(i)
     os.system("mkdir panchr"+ str(count))
     go1 = open("panchr"+ str(count)+"/Refchr"+str(count),"w")
     tempref = "panchr"+ str(count)+"/Refchr"+str(count)
@@ -114,13 +109,12 @@ if gosome.runall == "yes":#begin to generate the lineal pan-genome
     for i in pairfileline:
         count += 1
         goout = gosome.output
-        svguide = goout+str(count)+"."+fliter+".txt"#svguide temp1.fasta1.1000.txt
-        print(svguide)
-        command = "creatpangenome.py -1 "+"panchr"+ str(count)+"/Refchr"+str(count)+" -2 "+"panchr"+str(count)+"/Quechr"+str(count)+" -g "+svguide+" -o XXXXoutput"+str(count)+" -r "+str(rangefliter)
+        svguide = goout+str(count)+"."+fliter+".txt"
+        command = "creatpangenome.py -1 "+"panchr"+ str(count)+"/Refchr"+str(count)+" -2 "+"panchr"+str(count)+"/Quechr"+str(count)+" -g "+svguide+" -o XXXXoutput"+str(count)
         print(command)
         os.system(command)
         
-    os.system("cat XXXXoutput*.fasta > "+goout)#gather and create the final file
+    os.system("cat XXXXoutput*.fasta > "+goout+".fasta")#gather and create the final file
     os.system("cat XXXXoutput*.goc > "+goout+".goc")#gather and create the final file
     os.system("rm XXXXoutput*")
     print("Your output is "+goout+"pan.genome.fasta")
