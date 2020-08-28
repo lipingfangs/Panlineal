@@ -1,4 +1,4 @@
-Panlineal:A pipeline to generate lineal pan-genome
+PanLineal: A new concept and pipeline of constructing and utilization linear pan-genome from de novo assembled genome
 --------------------
 
 
