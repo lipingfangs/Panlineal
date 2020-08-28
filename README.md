@@ -40,7 +40,50 @@ python goone.py <in.fasta> <out.fasta>
 These programme was divided into Pan-genome forming(Panlineal.py) and SVs mapping(mappingtools.py);
 
 >Panlineal.py -h ;for help
+```
+usage: Panlineal.py [-h] [-p PAIRGUIDE] [-t THREADS] [-all {yes,no}]
+                    [-o OUTPUT] [-f FLITERSIZE] [-l LOCATION] [-r RANGEFLITER]
+                    [-merge {yes,no}] [-clean {yes,no}] [--version]
+
+Create one-by-one read-pairs and sv compare example: Panlineal.py -l location.lg -p example.pair.cfg -t 20 -all yes -o refquery -f 1000 -clean yes
+
+optional arguments:
+  -h, --help            show this help message and exit
+  
+  -p PAIRGUIDE, --pairguide PAIRGUIDE
+                        input your pairguide file
+                        
+  -t THREADS, --threads THREADS
+                        how many thread do you want to use
+                        
+  -all {yes,no}, --runall {yes,no}
+                        if yes: run multiple sequence of whole process,
+                        generate the pan genome file; if no:just splice;
+                        default yes
+                        
+  -o OUTPUT, --output OUTPUT
+                        name of the pan-genome output: <-o>.fasta
+                        
+  -f FLITERSIZE, --flitersize FLITERSIZE
+                        fliter size of SV; default 1000
+                        
+  -l LOCATION, --location LOCATION
+                        location of software "mummer" "lastz" and "svmu
+                        
+  -r RANGEFLITER, --rangefliter RANGEFLITER
+                        SVs distance between red and query; default 1000000
+                        
+  -merge {yes,no}, --merge {yes,no}
+                        merge .goc and generate the final location file;
+                        default yes
+                        
+  -clean {yes,no}, --clean {yes,no}
+                        Clean all of the middle file!; default no
+                        
+  --version             show program's version number and exit
+```
 >mappingtools.py -h ;for help
+
 
 **.cfg and .lg file is necessary for this programme** 
 
