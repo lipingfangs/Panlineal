@@ -1,6 +1,8 @@
 Gathergoc.py
+Hapmerge.py
 Panlineal.py
 README.md
+bestref.py
 creatpangenome.py
 mappingtools.py
 multiple.py

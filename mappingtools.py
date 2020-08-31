@@ -26,6 +26,9 @@ def get_options():
     parser.add_argument('-clean', '--clean', action='store',type=str,choices=('yes','no'),
                              help='Clean all of the middle file!"',default="no")
     
+    parser.add_argument('-create', '--createfasta', action='store',type=str,choices=('yes','no'),
+                             help='Create a optimal reference genome for short read"',default="no")
+
     return parser.parse_args()
 
 def acm(a,b):
@@ -229,7 +232,13 @@ goout.close()
 print("Hap caculation done!")
 print("Your ouput is "+gosome.output+".cov"+".hapc")
 
-                    
+if gosome.creatfasta == "yes":
+    print("Go to create a optimal reference genome for short read")
+    naa = os.system("python bestred.py -i "+panin+" -g "+gocguide+" -h "+gosome.output+".cov"+".hapc"+" -o "+ gosome.output+".cov"+".hapc.fasta" )
+    if naa == 0:
+        print("Success!")
+        print("Your optimal reference ouput is "+gosome.output+".cov"+".hapc.fasta")
+    
                 
                 
             

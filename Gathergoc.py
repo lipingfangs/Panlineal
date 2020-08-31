@@ -23,6 +23,7 @@ def Gathergoc(goc1n,goc2n,gooutn):
     cumlength = 0
     dicchr = {}
     dic1 ={}
+    dic2 = {}
     stro = goc1line[0].split()[0].strip()
     for j in goc1line:
         if j.find("Org") == -1:
@@ -72,9 +73,16 @@ def Gathergoc(goc1n,goc2n,gooutn):
         outfi.close()
 
     goout = open(gooutn,"w") 
-    
+    cumlength
     #intergrate of tempchrxxxx
-    for i in dicchr.keys(): 
+    for i in dicchr.keys():
+        gofi = open("temp.fi"+i,"r")#goin temp.fichr01
+        gofif = list(gofi.readlines())
+        gofi.close()
+        for f in gofif:
+            if f.find("Org") == -1:
+                dic2[f.split()[0].strip()] =f
+            
         infi = open("temp.fi"+i,"r")
         infif = list(infi.readlines())
         infi.close()
@@ -91,9 +99,9 @@ def Gathergoc(goc1n,goc2n,gooutn):
                     t[3] = ""
                 else:
                     loc = t.index("more")+1#three genome only in this way
-                    t[2] = dic1[t[loc]].split()[2]+"	"+dic1[t[loc]].split()[3] 
-                    t[3] = dic1[t[loc]].split()[4]+"	"+dic1[t[loc]].split()[5]
-                    t[6] = int(dic1[t[loc]].split()[5])-int(dic1[t[loc]].split()[4]) + int(t[6])+1
+                    t[2] = dic2[t[loc]].split()[2]+"	"+dic2[t[loc]].split()[3] 
+                    t[3] = dic2[t[loc]].split()[4]+"	"+dic2[t[loc]].split()[5]
+                    t[6] = int(dic2[t[loc]].split()[5])-int(dic2[t[loc]].split()[4]) + int(t[6])+1
                 for p in t:
                     if p == "":
                         continue
@@ -107,6 +115,7 @@ def Gathergoc(goc1n,goc2n,gooutn):
                 else:
                     print(infif[j].strip(),file = goout)
     goout.close()
+
                 
                     
             
