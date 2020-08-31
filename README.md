@@ -184,6 +184,12 @@ samtools=/home/lfp/miniconda3/bin/
 ref=Oryza_IRGSP-1.0_genome.1m.fasta  
 query=Oryza_HJX74_top_level_v2.2.1m.fa,Oryza_R498_Chr.1m.fa  
 
-  
+When need to merge the .hapc:
+merge.li format is necessary for Hapmerge.py input
+
+<1.hapc>,<2.hapc>,<3.hapc>...
+
+for example:
+>P133-DSW43038-S_L1-pan.cov.hapc,P208-DSW43111-S_L4-pan.cov.hapc,P229-DSW43149-S_L5-pan.cov.hapc,P236-DSW43156-S_L5-pan.cov.hapc,P54-DSW42960-S_L7-pan.cov.hapc.P91-DSW42997-S_L1-pan.cov.hapc
 
 
