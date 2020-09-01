@@ -22,34 +22,39 @@ def get_options():
     
 gosome = get_options()
 haplist = gosome.haplist
-haplist = open(haplist,"r")
+haplist = open(haplist.strip(),"r")
 haplistl = list(haplist.readlines())[0].split(",")
 haplist.close()
 
 dicg = collections.OrderedDict()
-
-for i in haplist1:
-    hapf = open(i,"r")
-    for j in list(hapf.readlines()):
+name = ""
+for i in haplistl:
+    name += i+"	"
+    hapf = open(i.strip(),"r")
+    for j in list(hapf.readlines())[1:]:
         j = j.split()
         if j[0] in list(dicg.keys()):
-            for k in j[1:]:
+            for k in j:
                 dicg[j[0]].append(k)
         else:
             dicg[j[0]] = []
+            for k in j:
+                dicg[j[0]].append(k)
     hapf.close()
             
-outfile = open(gosome.output,"w")            
+outfile = open(gosome.output,"w")     
+print("ID	PanPosition	RefPosition	"+name.strip(),file = outfile)
+
 for i in list(dicg.keys()):
     print(dicg[i][0],end = "	",file = outfile)
     print(dicg[i][1],end = "	",file = outfile)
     print(dicg[i][2],end = "	",file = outfile)
     for j in dicg[i]:
-        if i.find("Hap") != -1:
-            print(j, end = "	")
+        if j.find("Hap") != -1:
+            print(j, end = "	",file = outfile)
+    print("",file = outfile)
 
 outfile.close()
 print("merge done !")
-        
-        
+
         
