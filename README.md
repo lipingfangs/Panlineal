@@ -282,7 +282,7 @@ ID	PanPosition	RefPosition	HaplotypeComposition	Haplotype
 
 Contact
 ---------------------------
-If you have any problem please contact lpf_bio@foxmail.com or 86-13242867935
+If you have any problem about Panlineal please contact lpf_bio@foxmail.com or 86-13242867935
 
 
 
