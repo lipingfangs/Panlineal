@@ -4,4 +4,4 @@ svmu=/home/lfp/newsoft/svmu/
 bowtie2=/home/lfp/miniconda3/bin/
 samtools=/home/lfp/miniconda3/bin/
 ref=Oryza_IRGSP-1.0_genome.1m.fasta
-query=Oryza_HJX74_top_level_v2.2.1m.fa,Oryza_R498_Chr.1m.fa
+query=Oryza_HJX74_top_level_v2.2.chr.1m.fasta,Oryza_R498_chr.1m.fa
