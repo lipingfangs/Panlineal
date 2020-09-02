@@ -132,9 +132,9 @@ else:
 if gosome.clean == "yes":
     os.system("rm *txt")
     os.system("rm -rf panchr*")
-    os.system("rm *.fi")
+    os.system("rm *fi")
     os.system("rm *delta")
-    os.system("rm *.fichr*")
+    os.system("rm *fichr*")
 
 
 
