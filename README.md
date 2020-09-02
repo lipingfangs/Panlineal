@@ -230,6 +230,7 @@ OrgID	Chr	Start1	end1	Start2	end2	length
 ```
 
 **xxx.cov(file for recording the average mapping coverage of PAVs locus after mappingtools.py short reads mapping)**
+
 File format:
 
 ID<the ID of SVs location>	PanPosition<locus of the SVs based on combined PAVs in Panlineal pan-genome>	RefPosition<locus of the SVs based on combined PAVs in reference genome inputed in location.lg>	coverage<the average short reads mapping coverage of different PAVs locus>
@@ -279,7 +280,9 @@ ID	PanPosition	RefPosition	HaplotypeComposition	Haplotype
 ```
 
 
-
+Contact
+---------------------------
+If you have any problem please contact lpf_bio@foxmail.com or 86-13242867935
 
 
 
