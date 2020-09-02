@@ -251,21 +251,32 @@ ID	PanPosition	RefPosition	coverage
 1-4-chr10	458138	435421	1.6117	0.452	
 1-5-chr10	683947	660729	-1	9.7587	
 2-9-chr10	824027	795916	0.5491	14.988	
-1-6-chr10	847907	810170	0.4267	12.180	
-1-7-chr10	849385	810669	0.0446	12.318	
-2-10-chr10	854279	814301	-1	0.0	
-1-8-chr10	863075	822049	0.0037	9.9099	
-1-9-chr10	891848	848033	-1	12.577	
-1-10-chr10	900986	856479	-1	17.128	
-1-11-chr10	914733	868263	15.571	15.206	
-1-12-chr10	930805	879700	-1	10.737	
-2-11-chr10	1092406	1037829	-1	17.622	
-
 ```
 
+**xxx.cov.hapc(file for recording the Persence/absence condition of PAVs locus from coverage and create the SVs haplotype after mappingtools.py short reads mapping)**
 
+File format:
 
+ID	PanPosition	RefPosition	HaplotypeComposition	Haplotype 
 
+For example:
+```
+ID	PanPosition	RefPosition	HaplotypeComposition	Haplotype
+1-1-chr10	81013	81013	0	0	Hap00
+1-2-chr10	171843	168361	0	1	Hap01
+2-1-chr10	172379	168364	0	1	Hap01
+2-2-chr10	213521	208009	0	1	Hap01
+2-3-chr10	217433	209729	0	1	Hap01
+2-4-chr10	243894	235013	0	1	Hap01
+1-3-chr10	268308	253206	0	0	Hap00
+2-5-chr10	276199	260481	0	1	Hap01
+2-6-chr10	279697	263357	1	1	Hap11
+2-7-chr10	365487	347428	0	1	Hap01
+2-8-chr10	395016	376398	0	1	Hap01
+1-4-chr10	458138	435421	0	0	Hap00
+1-5-chr10	683947	660729	0	1	Hap01
+2-9-chr10	824027	795916	0	1	Hap01
+```
 
 
 
