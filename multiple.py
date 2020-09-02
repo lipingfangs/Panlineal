@@ -134,7 +134,7 @@ if gosome.clean == "yes":
     os.system("rm -rf panchr*")
     os.system("rm *.fi")
     os.system("rm *delta")
-    os.system("rm *.fichr01")
+    os.system("rm *.fichr*")
 
 
 
