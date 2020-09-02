@@ -14,7 +14,7 @@ def get_options():
     parser = argparse.ArgumentParser(description = description,prog = 'mappingtools.py')
     parser.add_argument('-i', '--inpan', action='store',type=str,help='input your reference .fasta')
     parser.add_argument('-t', '--threads', action='store',type=int,default=1,help='how many thread do you want to use')
-    parser.add_argument('-b', '--inbase', action='store',type=int,help='how many base-pair will you consider it as a total insertion rather than a replace',default=20)
+    parser.add_argument('-b', '--inbase', action='store',type=int,help='how many base-pair will you consider it as a total insertion rather than a replace; if these PAVs are considered as insertion, the coverage of this locus will be -1',default=20)
     parser.add_argument('-1', '--pairend1', action='store',type=str,help='input your pairend1 .fastq')
     parser.add_argument('-2', '--pairend2', action='store',type=str,help='input your pairend2 .fastq') 
     parser.add_argument('-l', '--location', action='store',type=str,
