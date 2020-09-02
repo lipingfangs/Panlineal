@@ -193,3 +193,63 @@ for example:
 >P133-DSW43038-S_L1-pan.cov.hapc,P208-DSW43111-S_L4-pan.cov.hapc,P229-DSW43149-S_L5-pan.cov.hapc,P236-DSW43156-S_L5-pan.cov.hapc,P54-DSW42960-S_L7-pan.cov.hapc.P91-DSW42997-S_L1-pan.cov.hapc
 
 
+Result files explaination
+-----------------------------
+
+**xxx.fasta (Pan-genome after Panlineal.py alignment and Vgs based Linearized integration)**
+
+For example:
+```
+>chr10
+TAAACCCTAAACCCTAAACCCTAAACCCTAAACCCTAAACCCTAACCCTAAACCCTAAACCCTAAACCCTAAACCCTAAACCCTAAACCCTAAACCCTAAACCCTAAACCCTTAAC
+ACGTTCTGAATATATGTTTCATATATTATCTATATTTTTATTATTTTCAGAAGTTTTTTAAAATTCAAAACATATTTTTAG
+TGTGTTCTCCTTATTTTCTAACTATTTTAATGATTTTAAGTTGAAATTATATAAATATAAATTCTATAAGATTCTAAACATTGTAAATAGATCATTCACGTATTATCTATACTTTAGTTTTTAATGTATTATTTTTATTATGCAATGTATTACTTTTAATTTTTA
+```
+
+**xxx.goc (file for recording corresponding Vgs Multidirectional branch information of Pan-genome(xxx.fasta) after Panlineal.py alignment and Vgs based Linearized integration)**
+File format:
+
+OrgID<the ID of SVs location>	Chr<chromosome>	Start1<PAV1 start location>	end1<PAV1 end location>	Start2<PAV2 or more start location>	end2<PAV2 or more end location>	length<total insertion length> if "more" appears in the row mean this locus has more than 2 kinds of PAVs locus 
+
+For example:
+```
+OrgID	Chr	Start1	end1	Start2	end2	length
+1-1-chr10	chr10	81013	81013	81014	84495	3482
+1-2-chr10	chr10	171843	171843	171844	172376	533
+2-1-chr10	chr10	172379	172379	172380	173876	1497
+2-2-chr10	chr10	213521	213616	213617	215808	2192
+2-3-chr10	chr10	217433	217433	217434	218610	1177
+2-4-chr10	chr10	243894	246549	246550	252770	6221
+1-3-chr10	chr10	268308	268309	268310	268925	616
+2-5-chr10	chr10	276199	276632	276633	277254	622
+2-6-chr10	chr10	279697	280326	280327	282045	1719
+2-7-chr10	chr10	365487	365487	365488	366046	559
+2-8-chr10	chr10	395016	395016	395017	399115	4099
+2-13-chr10	chr10	1338940	1339015	1339016	1343068	1343069	1344198	5183	more	1-17-chr10
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
