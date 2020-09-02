@@ -209,7 +209,7 @@ TGTGTTCTCCTTATTTTCTAACTATTTTAATGATTTTAAGTTGAAATTATATAAATATAAATTCTATAAGATTCTAAACA
 **xxx.goc (file for recording corresponding Vgs Multidirectional branch information of Pan-genome(xxx.fasta) after Panlineal.py alignment and Vgs based Linearized integration)**
 File format:
 
-OrgID<the ID of SVs location>	Chr<chromosome>	Start1<PAV1 start location>	end1<PAV1 end location>	Start2<PAV2 or more start location>	end2<PAV2 or more end location>	length<total insertion length> if "more" appears in the row mean this locus has more than 2 kinds of PAVs locus 
+OrgID<the ID of SVs location>	Chr<chromosome>	Start1<PAV1 start location>	end1<PAV1 end location>	Start2<PAV2 or more start location>	end2<PAV2 or more end location>	length<total insertion length> (if "more" appears in the row mean this locus has more than 2 kinds of PAVs locus) 
 
 For example:
 ```
@@ -229,10 +229,39 @@ OrgID	Chr	Start1	end1	Start2	end2	length
 
 ```
 
+**xxx.cov(file for recording the average mapping coverage of PAVs locus after mappingtools.py short reads mapping)**
+File format:
 
+ID<the ID of SVs location>	PanPosition<locus of the SVs based on combined PAVs in Panlineal pan-genome>	RefPosition<locus of the SVs based on combined PAVs in reference genome inputed in location.lg>	coverage<the average short reads mapping coverage of different PAVs locus>
+  
+For example:
+```
+ID	PanPosition	RefPosition	coverage
+1-1-chr10	81013	81013	-1	0.1057	
+1-2-chr10	171843	168361	-1	11.687	
+2-1-chr10	172379	168364	-1	9.9271	
+2-2-chr10	213521	208009	0.4631	19.489	
+2-3-chr10	217433	209729	-1	11.754	
+2-4-chr10	243894	235013	2.4470	12.244	
+1-3-chr10	268308	253206	-1	0.0	
+2-5-chr10	276199	260481	1.4988	11.404	
+2-6-chr10	279697	263357	5.7472	10.788	
+2-7-chr10	365487	347428	-1	13.508	
+2-8-chr10	395016	376398	-1	17.243	
+1-4-chr10	458138	435421	1.6117	0.452	
+1-5-chr10	683947	660729	-1	9.7587	
+2-9-chr10	824027	795916	0.5491	14.988	
+1-6-chr10	847907	810170	0.4267	12.180	
+1-7-chr10	849385	810669	0.0446	12.318	
+2-10-chr10	854279	814301	-1	0.0	
+1-8-chr10	863075	822049	0.0037	9.9099	
+1-9-chr10	891848	848033	-1	12.577	
+1-10-chr10	900986	856479	-1	17.128	
+1-11-chr10	914733	868263	15.571	15.206	
+1-12-chr10	930805	879700	-1	10.737	
+2-11-chr10	1092406	1037829	-1	17.622	
 
-
-
+```
 
 
 
