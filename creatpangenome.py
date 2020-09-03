@@ -88,36 +88,71 @@ if roundcountn > 1:
                 if k.find("Org")== -1:
                     tempgoclenc += 1
                     k = k.split()
-                    if j[0] == k[1]:
-                        if int(m)+ orglength >int(k[2]) and int(k[5]) >int(n)+ orglength:
-                            print(m,int(k[2]),k[5],n)
-                            g = int(k[2]) + cumlength
-                            f = int(k[5]) + cumlength
-                            seqdic1[j[0]] = seqdic1[j[0]][:f] + seqdic2[j[4]][c:d+1] + seqdic1[j[0]][f:]
+                    if "more" in k:
+                        if j[0] == k[1]:
+                            if int(m)+ orglength >int(k[2]) and int(k[k.index("more")-2]) >int(n)+ orglength:
+                                print(m,int(k[2]),k[5],n)
+                                g = int(k[2]) + cumlength
+                                f = int(k[5]) + cumlength
+                                seqdic1[j[0]] = seqdic1[j[0]][:f] + seqdic2[j[4]][c:d+1] + seqdic1[j[0]][f:]
 
+                                ids += 1
+                                idk = str(roundcountn)+"-"+str(ids)+"-"+ j[0]
+                                print(idk)
+                                locin = str(idk)+ "	" + j[0] + "	" +str(g) + "	" + str(f) + "	" + str(f+1) + "	" +str(f+orglength) + "	" +str(orglength)+"	"+"more"+"	"+k[0]
+                                locout= str("Org"+str(idk))+ "	"+ j[0] + "	" +j[1] + "	" + j[2] + "	" + j[5] + "	" +j[6] + "	" +j[8]
+                                print(locin,file = outputloc)
+                                print(locout,file = outputloc)
+                                cumlength += int(j[6])-int(j[5])
+                                break
+
+                        if tempgoclenc == len(tempgoc)/2:#weather the cycle will be end means not in same position
+                            seqdic1[j[0]] = seqdic1[j[0]][:b] + seqdic2[j[4]][c:d+1] + seqdic1[j[0]][b:]
+
+                            orglength = int(j[6])-int(j[5])
                             ids += 1
                             idk = str(roundcountn)+"-"+str(ids)+"-"+ j[0]
                             print(idk)
-                            locin = str(idk)+ "	" + j[0] + "	" +str(g) + "	" + str(f) + "	" + str(f+1) + "	" +str(f+orglength) + "	" +str(orglength)+"	"+"more"+"	"+k[0]
+                            locin = str(idk)+ "	" + j[0] + "	" +str(a) + "	" + str(b) + "	" + str(b+1) + "	" +str(b+orglength) + "	" +str(orglength)
                             locout= str("Org"+str(idk))+ "	"+ j[0] + "	" +j[1] + "	" + j[2] + "	" + j[5] + "	" +j[6] + "	" +j[8]
                             print(locin,file = outputloc)
                             print(locout,file = outputloc)
                             cumlength += int(j[6])-int(j[5])
-                            break
+                            
+                            
+                    else:
+                        if j[0] == k[1]:
+                            if int(m)+ orglength >int(k[2]) and int(k[5]) >int(n)+ orglength:
+                                    print(m,int(k[2]),k[5],n)
+                                    g = int(k[2]) + cumlength
+                                    f = int(k[5]) + cumlength
+                                    seqdic1[j[0]] = seqdic1[j[0]][:f] + seqdic2[j[4]][c:d+1] + seqdic1[j[0]][f:]
 
-                    if tempgoclenc == len(tempgoc)/2:#weather the cycle will be end means not in same position
-                        seqdic1[j[0]] = seqdic1[j[0]][:b] + seqdic2[j[4]][c:d+1] + seqdic1[j[0]][b:]
+                                    ids += 1
+                                    idk = str(roundcountn)+"-"+str(ids)+"-"+ j[0]
+                                    print(idk)
+                                    locin = str(idk)+ "	" + j[0] + "	" +str(g) + "	" + str(f) + "	" + str(f+1) + "	" +str(f+orglength) + "	" +str(orglength)+"	"+"more"+"	"+k[0]
+                                    locout= str("Org"+str(idk))+ "	"+ j[0] + "	" +j[1] + "	" + j[2] + "	" + j[5] + "	" +j[6] + "	" +j[8]
+                                    print(locin,file = outputloc)
+                                    print(locout,file = outputloc)
+                                    cumlength += int(j[6])-int(j[5])
+                                    break
 
-                        orglength = int(j[6])-int(j[5])
-                        ids += 1
-                        idk = str(roundcountn)+"-"+str(ids)+"-"+ j[0]
-                        print(idk)
-                        locin = str(idk)+ "	" + j[0] + "	" +str(a) + "	" + str(b) + "	" + str(b+1) + "	" +str(b+orglength) + "	" +str(orglength)
-                        locout= str("Org"+str(idk))+ "	"+ j[0] + "	" +j[1] + "	" + j[2] + "	" + j[5] + "	" +j[6] + "	" +j[8]
-                        print(locin,file = outputloc)
-                        print(locout,file = outputloc)
-                        cumlength += int(j[6])-int(j[5])
-          
+                        if tempgoclenc == len(tempgoc)/2:#weather the cycle will be end means not in same position
+                            seqdic1[j[0]] = seqdic1[j[0]][:b] + seqdic2[j[4]][c:d+1] + seqdic1[j[0]][b:]
+
+                            orglength = int(j[6])-int(j[5])
+                            ids += 1
+                            idk = str(roundcountn)+"-"+str(ids)+"-"+ j[0]
+                            print(idk)
+                            locin = str(idk)+ "	" + j[0] + "	" +str(a) + "	" + str(b) + "	" + str(b+1) + "	" +str(b+orglength) + "	" +str(orglength)
+                            locout= str("Org"+str(idk))+ "	"+ j[0] + "	" +j[1] + "	" + j[2] + "	" + j[5] + "	" +j[6] + "	" +j[8]
+                            print(locin,file = outputloc)
+                            print(locout,file = outputloc)
+                            cumlength += int(j[6])-int(j[5])
+                        
+                        
+
 outputloc.close()
 
 outputfile = open(gosome.output+".fasta","w")    

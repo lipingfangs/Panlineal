@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 import os
-os.system("chmod 777 multiple.py goone.py Hapmerge.py bestref.py creatpangenome.py Panlineal.py Gathergoc.py ./script/mumlastzsvmu.sh mappingtools.py ./script/bosm.sh ./script/cadepth.sh ./script/tempfi1create.py")
+os.system("chmod 777 multiple.py goone.py Hapmerge.py bestref.py creatpangenome.py Panlineal.py Gathergoc.py ./script/mumlastzsvmu.sh mappingtools.py ./script/bosm.sh ./script/cadepth.sh")
 setup(
       name="Panlinealv010",
       version="0.10",

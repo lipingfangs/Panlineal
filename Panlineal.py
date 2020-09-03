@@ -92,18 +92,35 @@ if gosome.merge ==  "yes":
     roundcount.close()
     k = int(roundcountn)
     for i in range(k-1):
-        p = i + 1
-        o = i + 2
-        q = i + 3
-        commandgather = "Gathergoc.py temp"+str(p)+".fasta.goc temp"+str(o)+".fasta.goc temp"+str(q)+".fasta.goc"
-        print(commandgather)
-        os.system(commandgather)
+        if i == 0:
+            f = i
+            p = i + 1
+            o = i + 2
+            goin1 = "temp"+str(p)+".fasta.goc"
+            goin2 = "temp"+str(o)+".fasta.goc"
+            goout = "temp"+str(f)+"temp.fasta.goc"
+            commandgather = "Gathergoc.py "+goin1+" "+goin2+" "+goout
+            print(commandgather)
+            os.system(commandgather)
+
+            
+        else:
+            f = i
+            goin1 = goout
+            goout = "temp"+str(f)+"temp.fasta.goc"
+            o = i + 2
+            goin2 = "temp"+str(o)+".fasta.goc"
+            commandgather = "Gathergoc.py "+goin1+" "+goin2+" "+goout
+            print(commandgather)
+            os.system(commandgather)
+            
+        
         
     
     
     
     
-os.system("mv temp"+str(q)+".fasta.goc "+output+".fasta.goc")
+os.system("mv  temp"+str(i)+"temp.fasta.goc "+output+".fasta.goc")
    
     
 print("Your output is "+output+".fasta") 

@@ -24,7 +24,11 @@ def Gathergoc(goc1n,goc2n,gooutn):
     dicchr = {}
     dic1 ={}
     dic2 = {}
-    stro = goc1line[0].split()[0].strip()
+    if goc1line[0].startswith("OrgID"):
+        stro = goc1line[1].split()[0].strip()
+    else:
+        stro = goc1line[0].split()[0].strip()
+    print(stro)
     for j in goc1line:
         if j.find("Org") == -1:
             dic1[j.split()[0].strip()] = j
@@ -37,9 +41,9 @@ def Gathergoc(goc1n,goc2n,gooutn):
         dicchr[j.split()[1].strip()] = []
         
     for i in dicchr.keys():
-        os.system("cat "+goc1n+" | grep -v 'Org' | grep '"+i+"'| awk '{print $1,$2,$5,$6,$3,$4,$7}' > temp1.fi")
+        os.system("cat "+goc1n+" | grep -v 'Org' | grep '"+i+"'| awk '{print $1,$2,$3,$4,$5,$6,$7}' > temp1.fi")
         os.system("cat "+goc2n+" | grep 'Org' | grep '"+i+"' > temp2.fi")
-        os.system("cat temp1.fi temp2.fi | sort -n -k 4 > temp.fi")
+        os.system("cat temp1.fi temp2.fi | sort -n -k 3 > temp.fi")
         outfi = open("temp.fi"+i,"w")#middle file tempchrxxx
         print("OrgID"+"	"+"Chr"+"	"+"Start1"+"	"+"end1"+"	"+"Start2"+"	"+"end2"+"	"+"length", file = outfi)
         tempfi = open("temp.fi","r")
@@ -61,10 +65,17 @@ def Gathergoc(goc1n,goc2n,gooutn):
                     n = j.split()[0]
                     p = dic1[n].split()
                     
-                    if len(dic1[stro].split()) > 7:
+                    if "more" in dic1[stro].split():
                         print(j)
-                        
-                        print(p[0]+"	"+p[1]+"	"+str(int(p[2])+cumlengh-orginlen)+"	"+str(int(p[3])+cumlengh-orginlen)+"	"+str(int(p[4])+cumlengh-orginlen)+"	"+str(int(p[5])+cumlengh-orginlen)+"	"+p[6].strip(), file = outfi)
+                        print(p[0]+"	"+p[1],end = "	", file = outfi)
+                        if "more" in p:
+                            for m in p[2:p.index("more")]:
+                                print(int(m)+cumlengh-orginlen,end = "	", file = outfi)
+                            print(p[-1].strip(), file = outfi)
+                        else:
+                            for m in p[2:-1]:
+                                print(int(m)+cumlengh-orginlen,end = "	", file = outfi)
+                            print(p[6].strip(), file = outfi)
                     else:
                         print(p[0]+"	"+p[1]+"	"+str(int(p[2])+cumlengh)+"	"+str(int(p[3])+cumlengh)+"	"+str(int(p[4])+cumlengh)+"	"+str(int(p[5])+cumlengh)+"	"+p[6].strip(), file = outfi)
                     #print(j)
