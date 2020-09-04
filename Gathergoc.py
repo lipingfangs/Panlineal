@@ -13,9 +13,12 @@ gocout = sys.argv[3]
 
 
 def Gathergoc(goc1n,goc2n,gooutn):
-    goc1 =open(goc1n,"r")
+    os.system("cp "+goc1n+" tmpgoin1")
+    os.system("sed -i 's/more/plus/g' tmpgoin1")
+    goc1 =open("tmpgoin1","r")
     goc1line = list(goc1.readlines())
     goc1.close()
+    os.system("rm tmpgoin1")
     goc2 =open(goc2n,"r")
     goc2line = list(goc2.readlines())
     goc2.close()
@@ -41,7 +44,8 @@ def Gathergoc(goc1n,goc2n,gooutn):
         dicchr[j.split()[1].strip()] = []
         
     for i in dicchr.keys():
-        os.system("cat "+goc1n+" | grep -v 'Org' | grep '"+i+"'| awk '{print $1,$2,$3,$4,$5,$6,$7}' > temp1.fi")
+        os.system("cat "+goc1n+" | grep -v 'Org' | grep '"+i+"' > temp1.fi")
+        os.system("sed -i 's/more/plus/g' temp1.fi")
         os.system("cat "+goc2n+" | grep 'Org' | grep '"+i+"' > temp2.fi")
         os.system("cat temp1.fi temp2.fi | sort -n -k 3 > temp.fi")
         outfi = open("temp.fi"+i,"w")#middle file tempchrxxx
@@ -77,7 +81,16 @@ def Gathergoc(goc1n,goc2n,gooutn):
                                 print(int(m)+cumlengh-orginlen,end = "	", file = outfi)
                             print(p[6].strip(), file = outfi)
                     else:
-                        print(p[0]+"	"+p[1]+"	"+str(int(p[2])+cumlengh)+"	"+str(int(p[3])+cumlengh)+"	"+str(int(p[4])+cumlengh)+"	"+str(int(p[5])+cumlengh)+"	"+p[6].strip(), file = outfi)
+                        if "plus" in p:
+                            print(p)
+                            print(p[0]+"	"+p[1],end = "	", file = outfi)
+                            for v in p[2:p.index("plus")-1]:
+                                print(str(int(v)+cumlengh),end = "	",file = outfi)
+                            for v in p[p.index("plus")-1:]:
+                                print(v,end = "	",file = outfi)
+                            print("",file = outfi)
+                        else:
+                            print(p[0]+"	"+p[1]+"	"+str(int(p[2])+cumlengh)+"	"+str(int(p[3])+cumlengh)+"	"+str(int(p[4])+cumlengh)+"	"+str(int(p[5])+cumlengh)+"	"+p[6].strip(), file = outfi)
                     #print(j)
                 stro = j.split()[0].replace("Org","")
                 
@@ -92,39 +105,69 @@ def Gathergoc(goc1n,goc2n,gooutn):
         gofi.close()
         for f in gofif:
             if f.find("Org") == -1:
-                dic2[f.split()[0].strip()] =f
+                dic2[f.split()[0].strip()] = f
             
         infi = open("temp.fi"+i,"r")
         infif = list(infi.readlines())
         infi.close()
         for j in range(len(infif)):
-            if len(infif[j].split())>7:
-                t = infif[j].split()
-                m = infif[j+1].split()
-                if infif[j+1].find("more") != -1:
-                    loc = m.index("more")
-                    t[2] = ""
-                    for v in m[2:loc-1]:
-                        t[2] += "	"+str(v).strip() 
-                    t[2] = t[2][1:]    
-                    t[3] = ""
+            
+            if infif[j].find("more") != -1:
+                if j < len(infif)-1:
+                    t = infif[j].split()
+                    inname = t[t.index("more")+1]
+                    if infif[j+1].find("more") != -1:
+                        m = infif[j+1].split()
+                        loc = m.index("more")
+                        t[2] = ""
+                        for v in m[2:loc-1]:
+                            t[2] += "	"+str(v).strip() 
+                        t[2] = t[2][1:]    
+                        t[3] = ""
+                    else:
+                        print(t)
+                        loc = t.index("more")+1#three genome only in this way
+                        t[2] = dic2[t[loc]].split()[2]+"	"+dic2[t[loc]].split()[3] 
+                        t[3] = dic2[t[loc]].split()[4]+"	"+dic2[t[loc]].split()[5]
+                        t[6] = int(dic2[t[loc]].split()[5])-int(dic2[t[loc]].split()[4]) + int(t[6])+1
+                    for p in t:
+                        if p == "":
+                            continue
+                        else:
+                            print(p,end ="	",file = goout)
+                    print("",file = goout)
                 else:
+                    t = infif[j].split()
+                    inname = t[t.index("more")+1]
+                    print(t)
                     loc = t.index("more")+1#three genome only in this way
                     t[2] = dic2[t[loc]].split()[2]+"	"+dic2[t[loc]].split()[3] 
                     t[3] = dic2[t[loc]].split()[4]+"	"+dic2[t[loc]].split()[5]
                     t[6] = int(dic2[t[loc]].split()[5])-int(dic2[t[loc]].split()[4]) + int(t[6])+1
-                for p in t:
-                    if p == "":
+                    for p in t:
+                        if p == "":
+                            continue
+                        else:
+                            print(p,end ="	",file = goout)
+                    print("",file = goout)
+                    
+            else:
+                if j < len(infif)-1:
+                    if "more" in infif[j-1].split() and infif[j-1].split()[infif[j-1].split().index("more")+1]==infif[j].split()[0]:
+                        print(infif[j-1].split()[infif[j-1].split().index("more")])
+                        continue
+                    if "more" in infif[j+1].split() and  infif[j+1].split()[infif[j+1].split().index("more")+1]==infif[j].split()[0]:
+
+                        print(infif[j+1].split()[infif[j+1].split().index("more")])
                         continue
                     else:
-                        print(p,end ="	",file = goout)
-                print("",file = goout)
-                
-            else:
-                if len(infif[j-1].split())>7:
-                    continue
+                        print(infif[j].strip(),file = goout)
                 else:
-                    print(infif[j].strip(),file = goout)
+                    if "more" in infif[j-1].split() and infif[j-1].split()[infif[j-1].split().index("more")+1]==infif[j].split()[0]:
+                        print(infif[j-1].split()[infif[j-1].split().index("more")])
+                        continue
+                    else:
+                        print(infif[j].strip(),file = goout)
     goout.close()
 
                 
