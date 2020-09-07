@@ -69,7 +69,7 @@ def Gathergoc(goc1n,goc2n,gooutn):
                     n = j.split()[0]
                     p = dic1[n].split()
                     
-                    if "more" in dic1[stro].split():
+                    if "more" in p:
                         print(j)
                         print(p[0]+"	"+p[1],end = "	", file = outfi)
                         if "more" in p:
