@@ -26,7 +26,7 @@ file4 = open(goout,"w")
 lines = list(file3.readlines())
 
 for i in lines[1:]:
-    print(i,file = file4)
+    print(i.strip(),file = file4)
 
 file3.close()
 file4.close()    
