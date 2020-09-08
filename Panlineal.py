@@ -21,7 +21,7 @@ def get_options():
                          help="fliter size of SV; default 1000",default=1000)
     parser.add_argument('-l', '--location', action='store',type=str,
                          help='location of software "mummer" "lastz" and "svmu',default="location.lg")
-    parser.add_argument('-r', '--rangefliter', action='store',type=int,help='SVs distance between red and query; default 1000000',default=1000000)   
+    parser.add_argument('-r', '--rangefliter', action='store',type=int,help='SVs distance between red and query; default 3000000',default=3000000)   
     parser.add_argument('-merge', '--merge', action='store',type=str,choices=('yes','no'),
                              help='merge .goc and generate the final location file; default yes',default="yes")
     parser.add_argument('-clean', '--clean', action='store',type=str,choices=('yes','no'),
