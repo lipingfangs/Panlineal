@@ -57,14 +57,15 @@ p2=gosome.pairend2
 
 parame.close()
 panin = gosome.inpan
+panout = gosome.inpan
 print(bowtie2+"bowtie2-build "+"--threads "+str(gosome.threads)+" "+panin+" "+panin)
 os.system(bowtie2+"bowtie2-build "+"--threads "+str(gosome.threads)+" "+panin+" "+panin)
 print("begin mapping")
-na1 = os.system("bosm.sh "+bowtie2+" "+panin+" "+samtools+" "+p1+" "+p2+" "+panin+" "+str(gosome.threads))
+na1 = os.system("bosm.sh "+bowtie2+" "+panin+" "+samtools+" "+p1+" "+p2+" "+panout+" "+str(gosome.threads))
 
 if na1 ==0:
     print("mapping done")
-    mapout=panin+".sort.bam"
+    mapout=panout+".sort.bam"
 else:
     print("mapping error!")
     quit()
