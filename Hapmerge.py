@@ -57,4 +57,10 @@ for i in list(dicg.keys()):
 outfile.close()
 print("merge done !")
 
+if gosome.ann != "no":
+    gff = gosome.ann
+    command = "python PAVsann.py "+gosome.output +" "+gff+" "+gosome.output+".ann" 
+    annout = os.system(command)
+    if annout = 0:
+        print("annotation done!")
         
