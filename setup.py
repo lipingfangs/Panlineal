@@ -8,5 +8,5 @@ setup(
       author="Fangping Li",
       license="LGPL",
       packages= find_packages(),
-      scripts=["creatpangenome.py","./script/mumlastzsvmu.sh","multiple.py","./script/bosm.sh","./script/cadepth.sh","mappingtools.py","Panlineal.py","Gathergoc.py","bestref.py","Hapmerge.py"],
+      scripts=["creatpangenome.py","./script/mumlastzsvmu.sh","multiple.py","./script/PAVsann.py","./script/bosm.sh","./script/cadepth.sh","mappingtools.py","Panlineal.py","Gathergoc.py","bestref.py","Hapmerge.py"],
       )
