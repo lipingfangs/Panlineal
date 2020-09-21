@@ -58,8 +58,8 @@ p2=gosome.pairend2
 parame.close()
 panin = gosome.inpan
 panout = gosome.output
-print(bowtie2+"bowtie2-build "+"--threads "+str(gosome.threads)+" "+panin+" "+output)
-os.system(bowtie2+"bowtie2-build "+"--threads "+str(gosome.threads)+" "+panin+" "+output)
+print(bowtie2+"bowtie2-build "+"--threads "+str(gosome.threads)+" "+panin+" "+panout)
+os.system(bowtie2+"bowtie2-build "+"--threads "+str(gosome.threads)+" "+panin+" "+panout)
 print("begin mapping")
 na1 = os.system("bosm.sh "+bowtie2+" "+panin+" "+samtools+" "+p1+" "+p2+" "+panout+" "+str(gosome.threads))
 
