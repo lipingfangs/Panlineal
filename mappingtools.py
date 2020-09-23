@@ -235,7 +235,7 @@ print("Your ouput is "+gosome.output+".cov"+".hapc")
 
 if gosome.createfasta == "yes":
     print("Go to create a optimal reference genome for short read")
-    naa = os.system("python bestred.py -i "+panin+" -g "+gocguide+" -h "+gosome.output+".cov"+".hapc"+" -o "+ gosome.output+".cov"+".hapc.fasta" )
+    naa = os.system("bestred.py -i "+panin+" -g "+gocguide+" -hap "+gosome.output+".cov"+".hapc"+" -o "+ gosome.output+".cov"+".hapc.fasta" )
     if naa == 0:
         print("Success!")
         print("Your optimal reference ouput is "+gosome.output+".cov"+".hapc.fasta")
